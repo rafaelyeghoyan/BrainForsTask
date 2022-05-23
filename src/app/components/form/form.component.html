@@ -1,0 +1,52 @@
+<div class="bg-color">
+    <div class="shape">
+        <h1>Register form</h1>
+        <form [formGroup]="form" (ngSubmit)="regist()">
+            <label for="firstname">First Name <span>*</span></label>
+            <input type="text" placeholder="Robert" id="firstname" formControlName="firstname" name="firstname">
+            <p *ngIf="form.get('firstname')?.hasError('required') && (form.get('firstname')?.dirty || form.get('firstname')?.touched)">
+                The First Name is required</p>
+            <p *ngIf="form.get('firstname')?.hasError('maxlength')">
+                The First Name is must be written max 20 symbols</p>
+            <label for="lastname">Last Name<span>*</span></label>
+            <input type="text" placeholder="Poghosyan" id="lastname" formControlName="lastname" name="lastname">
+            <p *ngIf="form.get('lastname')?.hasError('required') && (form.get('lastname')?.dirty || form.get('lastname')?.touched)">
+                The Last Name is required</p>
+            <p *ngIf="form.get('lastname')?.hasError('maxlength')">
+                The Last Name is must be written max 20 symbols</p>
+            <label for="phone">Phone Number<span>*</span></label>
+            <input type="tel" placeholder="094 35 45 73" id="phone" formControlName="phone" name="phone">
+            <p *ngIf="form.get('phone')?.hasError('required') && (form.get('phone')?.dirty || form.get('phone')?.touched)">
+                The Phone Number is required</p>
+            <p *ngIf="form.get('phone')?.hasError('pattern') && (form.get('phone')?.dirty || form.get('phone')?.touched)">
+                The Phone Number must be written only by number</p>
+            <label for="email">E-mail<span>*</span></label>
+            <input type="text" placeholder="robert.poghosyan.g@gmail.com" id="email" formControlName="email" name="email">
+            <p *ngIf="form.get('email')?.hasError('required') && (form.get('email')?.dirty || form.get('email')?.touched)">
+                The E-mail is required</p>
+            <p *ngIf="form.get('email')?.hasError('pattern')">
+                The E-mail is must be written example test@gmail.com</p>
+            <label for="username">User Name<span>*</span></label>
+            <input type="text" placeholder="poghosyan_rob" id="username" formControlName="username" name="username">
+            <p *ngIf="form.get('username')?.hasError('required') && (form.get('username')?.dirty || form.get('username')?.touched)">
+                The User Nam is required</p>
+            <label for="password">Password<span>*</span></label>
+            <input type="password" placeholder=". . . . . . . ." id="password" formControlName="password" name="password">
+            <p *ngIf="form.get('password')?.hasError('required') && (form.get('password')?.dirty || form.get('password')?.touched)">
+                The Password is required</p>
+            <p *ngIf="form.get('password')?.hasError('minlength')">
+                The Password is must be written min 6 symbols</p>
+                <label for="countrys">Country<span>*</span></label>
+                <select  formControlName="countrys" id="countrys" value="{{i}}" name="countrys">
+                    <option  hidden value="" >Country</option>
+                    <option value="1">Erevan</option>
+                    <option value="2">Gyumri</option>
+                    <option value="3">Vanadzor</option>
+                </select>
+                <p *ngIf="form.get('countrys')?.hasError('required') && (form.get('countrys')?.dirty || form.get('countrys')?.touched)">
+                    The Country is required</p>
+            <button [disabled]="form.invalid">Register</button>
+        </form>
+    </div>
+</div>
+
