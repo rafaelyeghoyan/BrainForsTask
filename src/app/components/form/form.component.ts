@@ -17,15 +17,15 @@ export class FormComponent implements OnInit {
   }
 
   form = this.fb.group({
-      firstname: ['',[Validators.required, Validators.maxLength(20)]],
-      lastname: ['',[Validators.required, Validators.maxLength(20)]],
+      firstname: ['',[Validators.required, Validators.maxLength(20),Validators.pattern(/^[A-Z][a-z]{1,20}[^0-9]$/)]],
+      lastname: ['',[Validators.required, Validators.maxLength(20),Validators.pattern(/^[A-Z][a-z]{1,20}[^0-9]$/)]],
       phone: ['',[Validators.required, Validators.pattern(/^[^A-Za-z]{1,}$/)]],
       email: ['',[Validators.required,Validators.pattern(/^[a-z,0-9,\.]+@[a-z]+\.+[a-z]{2,4}$/)]],
       username: ['',Validators.required],
       password: ['',[Validators.required, Validators.minLength(6)]],
       countrys: ['',Validators.required]
   })
-
+  
   getRequest () {
     this.request.getData('http://localhost:3000/users').subscribe((res: any) => {
       this.data = res;

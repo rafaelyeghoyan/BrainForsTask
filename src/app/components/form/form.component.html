@@ -8,12 +8,16 @@
                 The First Name is required</p>
             <p *ngIf="form.get('firstname')?.hasError('maxlength')">
                 The First Name is must be written max 20 symbols</p>
+          <p *ngIf="form.get('firstname')?.hasError('pattern')">
+            First name must not contain numbers and must begin with a capital letter</p>
             <label for="lastname">Last Name<span>*</span></label>
             <input type="text" placeholder="Last name" id="lastname" formControlName="lastname" name="lastname">
             <p *ngIf="form.get('lastname')?.hasError('required') && (form.get('lastname')?.dirty || form.get('lastname')?.touched)">
                 The Last Name is required</p>
             <p *ngIf="form.get('lastname')?.hasError('maxlength')">
                 The Last Name is must be written max 20 symbols</p>
+          <p *ngIf="form.get('lastname')?.hasError('pattern')">
+            Last name must not contain numbers and must begin with a capital letter</p>
             <label for="phone">Phone Number<span>*</span></label>
             <input type="tel" placeholder="+374(XX)-XXX-XXX" id="phone" formControlName="phone" name="phone">
             <p *ngIf="form.get('phone')?.hasError('required') && (form.get('phone')?.dirty || form.get('phone')?.touched)">
@@ -37,11 +41,13 @@
             <p *ngIf="form.get('password')?.hasError('minlength')">
                 The Password is must be written min 6 symbols</p>
                 <label for="countrys">Country<span>*</span></label>
-                <select  formControlName="countrys" id="countrys" name="countrys">
-                    <option  hidden value="" selected>Select your country</option>
-                    <option value="Erevan">Erevan</option>
-                    <option value="Gyumri">Gyumri</option>
-                    <option value="Vanadzor">Vanadzor</option>
+                <select  formControlName="countrys" id="countrys" name="countrys" >
+                    <option  hidden value="1" selected>Select your country</option>
+                    <option value="Armenia">Armenia</option>
+                    <option value="Russia">Russia</option>
+                    <option value="USA">USA</option>
+                    <option value="Georgian">Georgian</option>
+                    <option value="Great Britain">Great Britain</option>
                 </select>
                 <p *ngIf="form.get('countrys')?.hasError('required') && (form.get('countrys')?.dirty || form.get('countrys')?.touched)">
                     The Country is required</p>
@@ -57,7 +63,7 @@
                 <th>User Name</th>
                 <th>Action</th>
             </tr>
-            <tr *ngFor="let item of data">
+            <tr *ngFor="let item of data" class="td_s">
                 <td><p>{{item.firstname}}</p></td>
                 <td><p>{{item.lastname}}</p></td>
                 <td><p>{{item.phone}}</p></td>
