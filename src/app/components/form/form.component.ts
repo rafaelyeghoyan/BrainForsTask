@@ -17,6 +17,7 @@ export class FormComponent implements OnInit {
   }
 
   form = this.fb.group({
+      id:'',
       firstname: ['',[Validators.required, Validators.maxLength(20),Validators.pattern(/^[A-Z][a-z]{1,20}[^0-9]$/)]],
       lastname: ['',[Validators.required, Validators.maxLength(20),Validators.pattern(/^[A-Z][a-z]{1,20}[^0-9]$/)]],
       phone: ['',[Validators.required, Validators.pattern(/^[^A-Za-z]{1,}$/)]],
@@ -25,7 +26,7 @@ export class FormComponent implements OnInit {
       password: ['',[Validators.required, Validators.minLength(6)]],
       countrys: ['',Validators.required]
   })
-  
+
   getRequest () {
     this.request.getData('http://localhost:3000/users').subscribe((res: any) => {
       this.data = res;
