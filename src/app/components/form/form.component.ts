@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { RequestService } from 'src/app/service/request.service';
 
 @Component({
   selector: 'app-form',
@@ -8,10 +9,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class FormComponent implements OnInit {
 
- 
-  constructor(public fb:FormBuilder) { }
+  data: any[] = [];
+  constructor(public fb:FormBuilder, public request: RequestService) { }
 
   ngOnInit(): void {
+    this.getRequest();
   }
 
   form = this.fb.group({
@@ -24,19 +26,39 @@ export class FormComponent implements OnInit {
       countrys: ['',Validators.required]
   })
 
-  i:number = 1;
-
-  valuechange(){
-    console.log(this.i);
-    this.i++;
-    if(this.i == 4){
-      this.i = 1;
-    }
+  getRequest () {
+    this.request.getData('http://localhost:3000/users').subscribe((res: any) => {
+      this.data = res;
+    })
   }
 
   regist() {
-    console.log(this.form.value)
-    this.form.reset({countrys: ''});
+    if(this.k === -1){
+      this.request.createData('http://localhost:3000/users', this.form.value).subscribe(() => {
+        this.form.reset();
+        this.getRequest();
+      })
+    } else {
+      this.request.editData('http://localhost:3000/users',this.k,this.form.value).subscribe(() => {
+        this.form.reset();
+        this.getRequest();
+      })
+    }
+    this.k = -1;
+    this.form.reset();
+    this.getRequest();
   }
 
+  delete(num:any){
+    this.request.deleteData(`http://localhost:3000/users`,num).subscribe(() => {
+      this.getRequest();
+    })
+  }
+
+  k:number = -1;
+
+  edit(value:any,num:any){
+    this.form.patchValue(value);
+    this.k = num;
+  }
 }

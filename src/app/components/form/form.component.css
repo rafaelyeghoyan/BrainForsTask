@@ -1,24 +1,27 @@
 .bg-color {
     width: 100%;
-    background-image: linear-gradient(#774ab8,#38b2d6);
+    height: 100%;
+    background-image: linear-gradient(#a000f3, #0e00f6);
     padding: 100px 0;
 }
-.shape {
-    width: 70%;
+.center_block {
+    width: 1200px;
     margin: auto;
-    background-image: linear-gradient(#dd0fd3,#774ab8);
-    padding: 50px 150px;
+    background-image: linear-gradient(#2c1efd, #a000f3);
+    padding: 30px 20px;
 }
 h1 {
     text-transform: uppercase;
     font-size: 60px;
     margin-bottom: 20px;
     text-align: center;
-    color: #dd0fd3;
-    background-color: white;
+    color: #b800ff;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+  box-shadow: 0 0 5px mediumslateblue,0 0 10px mediumslateblue,0 0 15px mediumslateblue;
 }
 form {
-    padding-left: 70px;
+  width: 350px;
+  margin: auto;
 }
 label {
     display: block;
@@ -33,15 +36,16 @@ select {
 input {
     margin: 5px 0 10px;
 }
-button {
+form > button {
     text-transform: uppercase;
     padding: 10px 20px;
     font-size: 40px;
-    background-color: #dd0fd3;
-    color: white;
+    background-color: #73ff00;
+    color: #ad49f8;
+    font-weight: bolder;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
     border: 2px solid white;
-    margin: 50px 0;
-    margin-bottom: 0;
+    margin: 50px 0 0 0 ;
 }
 input, select {
     width: 300px;
@@ -53,30 +57,97 @@ span {
     margin-left: 5px;
     color: white;
 }
-p {
-    color: black;
+form > p {
+    color: red;
+    position: absolute;
     font-size: 20px;
+    background-color: white;
+    padding: 0 10px;
+    text-shadow: 0 0 5px red;
 }
 select.ng-valid.ng-touched.ng-dirty,input.ng-valid.ng-touched.ng-dirty{
-    box-shadow: 0px 0px 10px 5px green;
+    box-shadow: 0 0 10px 5px #00ff00;
 }
 select.ng-invalid.ng-touched.ng-dirty,input.ng-invalid.ng-touched.ng-dirty{
-    box-shadow: 0px 0px 10px 5px red;
+    box-shadow: 0 0 10px 5px red;
+}
+#button:disabled {
+    background-color: #4000ff;
+    color: white;
+}
+table {
+    background-color: #de00ff;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 60px;
+}
+table, tr, th,td {
+    border: 1px solid white;
+}
+td{
+    padding: 5px 10px;
+}
+td>p{
+  word-break: break-word;
+}
+th,td {
+    color: white;
+    font-size: 20px;
+    text-shadow: 0 0 5px #3cb8fc, 0 0 10px #3cb8fc, 0 0 20px #3cb8fc;
+}
+.edit {
+  display: inline-block;
+  border: none;
+  color: #ffffff;
+  text-shadow: 0 0 5px #3cb8fc, 0 0 10px #3cb8fc, 0 0 20px #3cb8fc;
+  box-shadow: 0 0 5px mediumslateblue,0 0 10px mediumslateblue,0 0 15px mediumslateblue;
+  font-size: 15px;
+  margin-right: 15px;
+  cursor: pointer;
+  padding: 3px;
+  background-color: rgba(255, 255, 255, 0);
+}
+.delete {
+  display: inline-block;
+  border: none;
+  color: #ffffff;
+  text-shadow: 0 0 5px #3cb8fc, 0 0 10px #3cb8fc, 0 0 20px #3cb8fc;
+  box-shadow: 0 0 5px mediumslateblue,0 0 10px mediumslateblue,0 0 15px mediumslateblue;
+  font-size: 15px;
+  padding: 3px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0);
 }
 
-@media screen and (max-width: 1010px) {
-    .shape {
-        padding: 50px 100px;
+ @media screen and (max-width: 1200px) {
+    .center_block {
+      width: 1000px;
     }
+   .edit {
+     margin-bottom: 10px;
+     padding: 3px;
+   }
 }
-@media screen and (max-width: 845px) {
-    .shape {
-        padding: 50px 50px;
-    }
+@media screen and (max-width: 1000px) {
+  .center_block {
+    width: 800px;
+  }
+  .edit {
+    font-size: 15px;
+  }
+  .delete {
+    font-size: 15px;
+  }
+  .center_block {
+    padding: 25px 10px;
+  }
+  td{
+    font-size: 16px;
+  }
 }
-@media screen and (max-width: 675px) {
-    .shape {
-        padding: 50px 25px;
+@media screen and (max-width: 840px) {
+    .center_block {
+      width: 95%;
     }
     h1 {
         font-size: 34px;
@@ -84,11 +155,20 @@ select.ng-invalid.ng-touched.ng-dirty,input.ng-invalid.ng-touched.ng-dirty{
     .bg-color {
         padding: 50px 0;
     }
-    .shape {
-        width: 90%;
+    th,td>p{
+      font-size: 15px;
     }
+  .edit {
+    font-size: 10px;
+    margin-bottom: 5px;
+    margin-right: 0;
+
+  }
+  .delete {
+    font-size: 10px;
+  }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 690px) {
     input, select {
         width: 210px;
     }
@@ -98,12 +178,24 @@ select.ng-invalid.ng-touched.ng-dirty,input.ng-invalid.ng-touched.ng-dirty{
     button {
         font-size: 31px;
     }
+  th,td>p{
+    font-size: 12px;
+  }
 }
-
-
-
-
-
+@media screen and (max-width: 580px) {
+  th,td>p{
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 530px) {
+  .edit{
+    font-size: 10px;
+    margin:6px 7px 5px 6px;
+  }
+  td{
+    padding: 0;
+  }
+}
 
 
 

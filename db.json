@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "firstname": "Name",
+      "lastname": "Example",
+      "phone": "099-999-999",
+      "email": "example@exp.com",
+      "username": "user_exp",
+      "password": "123456",
+      "countrys": "Vanadzor",
+      "id": 1
+    }
+  ]
+}
